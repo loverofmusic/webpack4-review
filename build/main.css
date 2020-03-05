@@ -1,0 +1,14 @@
+#header {
+  color: #5B83AD;
+  width: 600px;
+  height: 60px;
+}
+
+nav {
+  width: 100px;
+  color: #F90;
+  transform: rotate(45deg); }
+
+body{background-color:green}
+body{background-color: red;};
+
