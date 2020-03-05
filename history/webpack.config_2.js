@@ -1,7 +1,7 @@
 const path = require("path");
-// copy html 到 打包之后的目录，并注入打包之后的入口js文件
+// copy html 到 打包之后的目录，并注入打包之后的入口js文件 插入html的body标签下面
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-//将css单独抽离出来
+//将css单独抽离出来, 并插入head标签下面
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
       hash: false
     }),
     new MiniCssExtractPlugin({
-      filename: main.css
+      filename: "main.css"
     })
   ],
   module: {
@@ -42,7 +42,8 @@ module.exports = {
           //   // }
           // },
           MiniCssExtractPlugin.loader,
-          "css-loader"
+          "css-loader",
+          "postcss-loader"
         ]
       },
       {
@@ -51,6 +52,7 @@ module.exports = {
           // "style-loader",
           MiniCssExtractPlugin.loader,
           "css-loader",
+          "postcss-loader",
           "sass-loader"
         ]
       },
@@ -60,6 +62,7 @@ module.exports = {
           // "style-loader",
           MiniCssExtractPlugin.loader,
           "css-loader", 
+          "postcss-loader",
           "less-loader"
         ]
       }

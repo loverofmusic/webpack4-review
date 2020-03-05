@@ -3,6 +3,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 //将css单独抽离出来, 并插入head标签下面
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//压缩css
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+//压缩js
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   devServer: {
@@ -10,6 +14,11 @@ module.exports = {
     contentBase: "./build",
     progress: true,
     compress: true
+  },
+  optimization: {//优化项
+    minimizer: [//压缩
+      new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})
+    ]
   },
   mode: "development",
   entry: "./src/index.js", //入口
